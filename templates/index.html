@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Krishimitra</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #d4fc79, #96e6a1);
+            margin:0;
+            padding:0;
+        }
+
+        .container{
+            width: 500px;
+            margin: 40px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h1{
+            color: #1b5e20;
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        h2{
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 20px;
+        }
+
+        input{
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            border-radius: 10px;
+            border: 1px solid #bbb;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        input:focus{
+            border: 2px solid green;
+            outline: none;
+            box-shadow: 0px 0px 8px rgba(0,128,0,0.4);
+        }
+
+        button{
+            background: #1b5e20;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        button:hover{
+            background: #2e7d32;
+            transform: scale(1.05);
+        }
+
+        .result{
+            margin-top: 30px;
+            background: #f1fff1;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 6px solid green;
+        }
+
+        .result p{
+            font-size: 20px;
+            color: #222;
+            margin: 10px 0;
+        }
+
+        .emoji{
+            font-size: 50px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="emoji">🌾</div>
+
+        <h1>Krishimitra</h1>
+
+        <h2>
+            Smart Crop Advisory System using Machine Learning Algorithm
+        </h2>
+
+        <form method="POST">
+
+            <input type="number" name="N" placeholder="Nitrogen (0 - 140)" required>
+
+            <input type="number" name="P" placeholder="Phosphorus (5 - 145)" required>
+
+            <input type="number" name="K" placeholder="Potassium (5 - 205)" required>
+
+            <input type="number" step="0.1" name="temperature"
+            placeholder="Temperature (8°C - 44°C)" required>
+
+            <input type="number" step="0.1" name="humidity"
+            placeholder="Humidity (14 - 100)" required>
+
+            <input type="number" step="0.1" name="ph"
+            placeholder="pH Value (3.5 - 10)" required>
+
+            <input type="number" step="0.1" name="rainfall"
+            placeholder="Rainfall (20 - 300 mm)" required>
+
+            <button type="submit">Predict</button>
+
+        </form>
+        {% if prediction %}
+
+<div class="result">
+    <p>🌱 <b>Recommended Crop:</b> {{ prediction }}</p>
+    <p>💧 <b>Irrigation Needed:</b> {{ irrigation }}</p>
+    <p>🚿 <b>Recommended Water:</b> {{ water }}</p>
+</div>
+
+{% endif %}
